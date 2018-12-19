@@ -1,0 +1,2 @@
+# ClashCard
+ClashCard - WeChatGame
