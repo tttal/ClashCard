@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.0",
+  "uuid": "5f9daab9-f6d9-442b-b4ca-e45424b92899",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "Gemstone": {
+      "ver": "1.0.3",
+      "uuid": "13f954d8-98aa-4507-bd4c-afc73544e3eb",
+      "rawTextureUuid": "5f9daab9-f6d9-442b-b4ca-e45424b92899",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 41,
+      "height": 49,
+      "rawWidth": 41,
+      "rawHeight": 49,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

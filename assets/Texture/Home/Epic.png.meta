@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.0",
+  "uuid": "807f9f20-c509-4424-a594-701928e958cc",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "Epic": {
+      "ver": "1.0.3",
+      "uuid": "9af1dc47-21a6-4d90-a905-38c6774d6953",
+      "rawTextureUuid": "807f9f20-c509-4424-a594-701928e958cc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 144,
+      "height": 142,
+      "rawWidth": 144,
+      "rawHeight": 142,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
