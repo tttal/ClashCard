@@ -1,5 +1,9 @@
 module.exports = {
 
+    left: -340,
+    center: -1000,
+    right: -1000,
+
     game: {
         next: 1,
         energy: 0,
@@ -23,7 +27,7 @@ module.exports = {
     roleConfig: [
         { "id": 1, "name": "1", "lnihp": 1, "uphp": 1, "lniatk": 1, "upatk": 1, "lniex": 20, "upex": 1, "energy": 100 },
         { "id": 2, "name": "2", "lnihp": 2, "uphp": 2, "lniatk": 2, "upatk": 2, "lniex": 2, "upex": 2, "energy": 200 },
-        { "id": 3, "name": "3", "lnihp": 3, "uphp": 3, "lniatk": 3, "upatk": 3, "lniex": 3, "upex": 3, "energy": 300 },
+        { "id": 3, "name": "3", "lnihp": 100, "uphp": 10, "lniatk": 5, "upatk": 3, "lniex": 3, "upex": 3, "energy": 300 },
         { "id": 4, "name": "4", "lnihp": 4, "uphp": 4, "lniatk": 4, "upatk": 4, "lniex": 4, "upex": 4, "energy": 400 },
         { "id": 5, "name": "5", "lnihp": 5, "uphp": 5, "lniatk": 5, "upatk": 5, "lniex": 5, "upex": 5, "energy": 500 },
         { "id": 6, "name": "6", "lnihp": 6, "uphp": 6, "lniatk": 6, "upatk": 6, "lniex": 6, "upex": 6, "energy": 600 },

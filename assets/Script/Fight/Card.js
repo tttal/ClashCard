@@ -125,25 +125,9 @@ cc.Class({
         ocenter: false,
         oright: false,
     },
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
     start() {
-
         var sun = this;
-        // sun.node.on(cc.Node.EventType.TOUCH_END, function () {
-        //     console.log(root.roleConfig[sun.id - 1].energy, root.game.energy);
-        //     if (root.roleConfig[sun.id - 1].energy <= root.game.energy) {
-        //         root.game.energy -= root.roleConfig[sun.id - 1].energy;
-        //     } else {
-        //         console.log('能量不够啊兄弟');
-        //     }
-
-        // });
-
-        sun.node.on(cc.Node.EventType.TOUCH_CANCEL, function () {
+        var touch_end = function () {
             try {
                 sun.role.destroy();
             } catch (error) {
@@ -152,45 +136,19 @@ cc.Class({
             if (!sun.can) {
                 return (false);
             }
-            var role = cc.instantiate(sun.role);
-
             if (cc.find('Canvas/Game/GameA').children.length == 1) {
                 cc.find('Canvas/Game/GameA').children[0].getComponent('Role').self = !!1;
                 cc.find('Canvas/Game/GameA').children[0].parent = cc.find('Canvas/Game/GameB');
-
                 if (root.roleConfig[sun.id - 1].energy <= root.game.energy) {
                     root.game.energy -= root.roleConfig[sun.id - 1].energy;
                     this.node.destroy();
                 } else {
                     console.log('能量不够啊兄弟');
                 }
-
             }
-
-        }, this);
-        sun.node.on(cc.Node.EventType.TOUCH_END, function () {
-            try {
-                sun.role.destroy();
-            } catch (error) {
-
-            }
-            if (!sun.can) {
-                return (false);
-            }
-            var role = cc.instantiate(sun.role);
-            if (cc.find('Canvas/Game/GameA').children.length == 1) {
-                cc.find('Canvas/Game/GameA').children[0].parent = cc.find('Canvas/Game/GameB');
-                cc.find('Canvas/Game/GameA').children[0].getComponent('Role').self = !!1;
-                if (root.roleConfig[sun.id - 1].energy <= root.game.energy) {
-                    root.game.energy -= root.roleConfig[sun.id - 1].energy;
-                    this.node.destroy();
-                } else {
-                    console.log('能量不够啊兄弟');
-                }
-
-            }
-        });
-
+        };
+        sun.node.on(cc.Node.EventType.TOUCH_CANCEL, touch_end, this);
+        sun.node.on(cc.Node.EventType.TOUCH_END, touch_end, this);
         sun.node.on(cc.Node.EventType.TOUCH_START, function () {
             if (root.roleConfig[sun.id - 1].energy <= root.game.energy) {
                 sun.can = !!1;
@@ -236,9 +194,8 @@ cc.Class({
                 sun.role.setPosition((posi.x - gameCwidth + pwidth) / root.intshow, posi.y - gameCheight + pheight);
                 sun.role.parent = cc.find('Canvas/Game/GameC');
             } else {
-                console.log('能量不够啊兄弟');
-            }
 
+            }
         }, this);
         sun.node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
             if (!sun.can) {
@@ -257,10 +214,14 @@ cc.Class({
                 }
                 try {
                     sun.rolea.y += delta.y;
+                    if (sun.rolea.y >= root.left) {
+                        sun.rolea.y = root.left;
+                    }
+                    if (sun.rolea.y <= -340) {
+                        sun.rolea.y = -340;
+                    }
                 } catch (error) {
-
                 }
-
             } else if (sun.role.x > -50 && sun.role.x < 40) {
                 if (sun.ocenter == !1) {
                     sun.ocenter = !!1;
@@ -271,6 +232,12 @@ cc.Class({
                 }
                 try {
                     sun.rolea.y += delta.y;
+                    if (sun.rolea.y >= root.center) {
+                        sun.rolea.y = root.center;
+                    }
+                    if (sun.rolea.y <= -340) {
+                        sun.rolea.y = -340;
+                    }
                 } catch (error) {
 
                 }
@@ -284,12 +251,17 @@ cc.Class({
                 }
                 try {
                     sun.rolea.y += delta.y;
+                    if (sun.rolea.y >= root.right) {
+                        sun.rolea.y = root.right;
+                    }
+                    if (sun.rolea.y <= -340) {
+                        sun.rolea.y = -340;
+                    }
                 } catch (error) {
-
                 }
             } else {
                 if (sun.oleft || sun.ocenter || sun.oright) {
-                    sun.rolea.destroy();
+                    cc.find('Canvas/Game/GameA').removeAllChildren();
                 }
                 sun.oleft = !1;
                 sun.ocenter = !1;
@@ -338,7 +310,6 @@ cc.Class({
         sun.ShowCard.getComponent(cc.Sprite).spriteFrame = spriteFrame;
         sun.Text.getComponent(cc.Label).string = root.roleConfig[sun.id - 1].energy / 100;
     },
-
     update(dt) {
         var sun = this;
         if (root.roleConfig[sun.id - 1].energy >= root.game.energy) {

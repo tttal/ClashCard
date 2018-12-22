@@ -148,6 +148,11 @@ cc.Class({
         sun.Text.getComponent(cc.Label).string = root.roleConfig[sun.id - 1].energy / 100;
     },
 
+    onDestroy() {
+        var sun = this;
+        clearInterval(sun.int);
+    },
+
     // update(dt) {
     //     var sun = this;
     //     if (root.roleConfig[sun.id - 1].energy >= root.game.energy) {
