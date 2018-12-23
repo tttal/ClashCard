@@ -98,6 +98,14 @@ cc.Class({
             var d = a.node.x;
             var g = a.node.y + a.distance;
             var f = a.node.y;
+            if (g >= 310) {
+                if (!a.attacking) {
+                    a.attacking = true;
+                    a.moving = false;
+                    a.onAtk();
+                }
+                return (false);
+            }
             if (!a.attacking) {
                 var e = 0;
                 cc.find('Canvas/Game/GameB').children.forEach(function (key) {
